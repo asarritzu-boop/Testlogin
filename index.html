@@ -1847,10 +1847,7 @@ function pulisciRicercaSchemi() {
     
     <script>
         // Mostra login all'avvio, in attesa che Firebase verifichi la sessione
-        document.getElementById('view-login').style.display = 'flex';
-        document.getElementById('main-menu').style.display = 'none';
-
-        // --- LISTENER AUTENTICAZIONE ---
+         // --- LISTENER AUTENTICAZIONE ---
         _auth.onAuthStateChanged(function(user) {
             if (user) {
                 window._currentUser = user;
