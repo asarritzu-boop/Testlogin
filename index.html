@@ -1841,7 +1841,7 @@ function pulisciRicercaSchemi() {
                 window._currentUser = user;
                 document.getElementById('view-login').style.setProperty('display','none','important');
                 document.getElementById('main-menu').style.setProperty('display','flex','important');
-                document.getElementById('user-info-bar').style.display = 'flex';
+                document.getElementById('user-info-bar').style.setProperty('display', 'flex', 'important');
                 document.getElementById('user-email-display').innerText = user.email;
                 syncFromCloud(true); // carica dati cloud al login silenziosamente
             } else {
