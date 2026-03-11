@@ -201,7 +201,7 @@
         <button id="btnLoginAction" onclick="doLogin()" style="width:100%; padding:14px; background:#21296b; color:white; border:none; border-radius:12px; font-size:15px; font-weight:700; cursor:pointer;">ACCEDI</button>
     </div>
 </div>
-    <div id="user-info-bar" style="display:none; width:100%; background:#21296b; padding:8px 20px; box-sizing:border-box; align-items:center; justify-content:space-between;">
+    <div id="user-info-bar" style="display:none; position:fixed; top:0; left:0; width:100%; background:#21296b; padding:8px 20px; box-sizing:border-box; align-items:center; justify-content:space-between; z-index:9998;">
     <span id="user-email-display" style="color:white; font-size:12px; opacity:0.85;"></span>
     <div style="display:flex; align-items:center; gap:12px;">
         <span id="sync-status" style="font-size:12px; font-weight:600;"></span>
@@ -209,7 +209,7 @@
         <button onclick="eliminaAccount()" style="background:rgba(255,59,48,0.3); border:none; color:white; font-size:12px; padding:5px 12px; border-radius:20px; cursor:pointer;">🗑 Account</button>
     </div>
 </div>
-<div id="main-menu" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+    <div id="main-menu" style="display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 40px;">
         <div class="header">
 <button class="help-btn" onclick="toggleView('guida')">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
