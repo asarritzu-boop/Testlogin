@@ -207,6 +207,7 @@
     <div style="display:flex; align-items:center; gap:12px;">
         <span id="sync-status" style="font-size:12px; font-weight:600;"></span>
         <button onclick="doLogout()" style="background:rgba(255,255,255,0.15); border:none; color:white; font-size:12px; padding:5px 12px; border-radius:20px; cursor:pointer;">Esci</button>
+<button onclick="eliminaAccount()" style="background:rgba(255,59,48,0.3); border:none; color:white; font-size:12px; padding:5px 12px; border-radius:20px; cursor:pointer;">🗑 Account</button>
     </div>
 </div>
         <div class="header">
@@ -1876,7 +1877,22 @@ function pulisciRicercaSchemi() {
             _auth.signInWithEmailAndPassword(email, pass)
                 .catch(e => { errEl.innerText = tradErrore(e.code); });
         }
-
+function eliminaAccount() {
+    if (!window._currentUser) return;
+    if (confirm('Eliminare definitivamente il tuo account e tutti i dati cloud?\nQuesta azione è irreversibile.')) {
+        const uid = window._currentUser.uid;
+        _db.collection('utenti').doc(uid).delete()
+            .then(() => window._currentUser.delete())
+            .then(() => alert('Account eliminato.'))
+            .catch(e => {
+                if (e.code === 'auth/requires-recent-login') {
+                    alert('Per sicurezza devi prima disconnetterti e riaccedere, poi riprovare.');
+                } else {
+                    alert('Errore: ' + e.message);
+                }
+            });
+    }
+}
         // --- REGISTRAZIONE ---
         function doRegister() {
             const email = document.getElementById('loginEmail').value.trim();
@@ -1886,8 +1902,14 @@ function pulisciRicercaSchemi() {
             if (!email || !pass) { errEl.innerText = 'Inserisci email e password'; return; }
             if (pass.length < 6) { errEl.innerText = 'Password minimo 6 caratteri'; return; }
             _auth.createUserWithEmailAndPassword(email, pass)
-                .catch(e => { errEl.innerText = tradErrore(e.code); });
-        }
+    .then(() => {
+        errEl.style.color = '#34c759';
+        errEl.innerText = '✅ Registrazione completata! Accesso in corso...';
+    })
+    .catch(e => { 
+        errEl.style.color = '#ff3b30';
+        errEl.innerText = tradErrore(e.code); 
+    });
 
         // --- LOGOUT ---
         function doLogout() {
