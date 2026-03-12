@@ -264,16 +264,59 @@
             <button class="btn btn-interni" onclick="toggleView('interni')">ORATORI INTERNI</button>
         </div>
         <div class="footer-menu">
-          <span id="user-badge" style="font-size:12px; color:#8e8e93; margin-bottom:4px;"></span>
+        <div class="footer-menu">
+          <span id="user-badge" style="font-size:12px; color:#8e8e93; margin-bottom:8px;">👤</span>
           <input type="file" id="fileInput" accept=".json" style="display:none;" onchange="importData(event)">
-          <button class="btn-backup" onclick="document.getElementById('fileInput').click()">Importa Backup</button>
-          <button class="btn-backup" onclick="exportData()">Esporta Backup</button>
-          <button class="btn-backup" style="color:#5856d6;" onclick="syncToCloud()">☁️ Salva su Cloud</button>
-          <button class="btn-backup" style="color:#34c759;" onclick="syncFromCloud()">⬇️ Ripristina da Cloud</button>
-          <button class="btn-backup" style="color:#ff9500;" onclick="doLogout()">🚪 Logout</button>
-          <button class="btn-backup" style="color:#ff3b30;" onclick="eliminaAccount()">🗑️ Elimina Account</button>
-          
-          <button class="btn-backup" style="color:#ff3b30; border-top:1px solid #ddd; width:100%; padding-top:15px;" onclick="resetApp()">Reset Totale Dati</button>
+
+          <!-- Griglia 2 colonne -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; width:90%; max-width:360px;">
+
+            <!-- Backup locale -->
+            <button onclick="document.getElementById('fileInput').click()" style="background:white; border:none; border-radius:12px; padding:14px 8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:5px;">
+              <span style="font-size:22px;">📥</span>
+              <span style="font-size:11px; font-weight:600; color:#3a3a3c;">Importa</span>
+              <span style="font-size:10px; color:#8e8e93;">Backup locale</span>
+            </button>
+
+            <button onclick="exportData()" style="background:white; border:none; border-radius:12px; padding:14px 8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:5px;">
+              <span style="font-size:22px;">📤</span>
+              <span style="font-size:11px; font-weight:600; color:#3a3a3c;">Esporta</span>
+              <span style="font-size:10px; color:#8e8e93;">Backup locale</span>
+            </button>
+
+            <!-- Cloud -->
+            <button onclick="syncToCloud()" style="background:white; border:none; border-radius:12px; padding:14px 8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:5px;">
+              <span style="font-size:22px;">☁️</span>
+              <span style="font-size:11px; font-weight:600; color:#5856d6;">Salva</span>
+              <span style="font-size:10px; color:#8e8e93;">su Cloud</span>
+            </button>
+
+            <button onclick="syncFromCloud()" style="background:white; border:none; border-radius:12px; padding:14px 8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:5px;">
+              <span style="font-size:22px;">⬇️</span>
+              <span style="font-size:11px; font-weight:600; color:#34c759;">Ripristina</span>
+              <span style="font-size:10px; color:#8e8e93;">da Cloud</span>
+            </button>
+
+            <!-- Account -->
+            <button onclick="doLogout()" style="background:white; border:none; border-radius:12px; padding:14px 8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:5px;">
+              <span style="font-size:22px;">🚪</span>
+              <span style="font-size:11px; font-weight:600; color:#ff9500;">Logout</span>
+              <span style="font-size:10px; color:#8e8e93;">Esci</span>
+            </button>
+
+            <button onclick="eliminaAccount()" style="background:white; border:none; border-radius:12px; padding:14px 8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:5px;">
+              <span style="font-size:22px;">🗑️</span>
+              <span style="font-size:11px; font-weight:600; color:#ff3b30;">Elimina</span>
+              <span style="font-size:10px; color:#8e8e93;">Account</span>
+            </button>
+
+          </div>
+
+          <!-- Reset separato in fondo -->
+          <button onclick="resetApp()" style="margin-top:12px; background:none; border:none; color:#ff3b30; font-size:12px; font-weight:500; padding:8px; cursor:pointer; text-transform:uppercase; letter-spacing:0.5px;">
+            ⚠️ Reset Totale Dati
+          </button>
+
         </div>
     </div>
        
@@ -502,6 +545,8 @@
                     <li><strong>ORATORI INTERNI:</strong> Gestione oratori locali e schemi personali.</li>
                     <li><strong>Importa Backup:</strong> Carica un file .json per ripristinare i dati.</li>
                     <li><strong>Esporta Backup:</strong> Scarica il database attuale in formato .json.</li>
+                    <li><strong>FUNZIONE CLOUD</strong> Salva il database attuale OnLine. 
+                     Con le stesse credenziali (email e password) si condividono i dati su altri dispositivi.</li>
                 </ul>
             </div>
 
